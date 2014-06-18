@@ -59,9 +59,8 @@ cookbook_file "check_vmstat_top5.pl" do
 end
 
 # ==== create xinetd config
-template "xinetd_nrpe.erb" do
+template "/etc/xinetd.d/nrpe" do
   source  "xinetd_nrpe.erb"
-  path    "/etc/xinetd.d/nrpe"
   owner   "root"
   group   "root"
   mode    0644
@@ -73,9 +72,8 @@ template "xinetd_nrpe.erb" do
 end
 
 # ==== create nrpe config
-template "nrpe_cfg.erb" do
+template "/etc/nagios/nrpe.cfg" do
   source  "nrpe_cfg.erb"
-  path    "/etc/nagios/nrpe.cfg"
   owner   "root"
   group   "root"
   mode    0644
