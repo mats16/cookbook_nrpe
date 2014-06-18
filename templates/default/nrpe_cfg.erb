@@ -6,7 +6,7 @@ server_port = 5666
 nrpe_user  = nagios
 nrpe_group = nagios
 
-allowed_hosts = <%= @nagios_server %>
+allowed_hosts = <%= node["nrpe"]["nagios_server"] %>
 
 dont_blame_nrpe = 0
 allow_bash_command_substitution = 0
@@ -27,6 +27,6 @@ command[check_mysql] = /usr/lib64/nagios/plugins/check_mysql -u root -pdacsql200
 command[check_log_messages] = /usr/lib64/nagios/plugins/check_log3.pl -l /var/log/messages -s /tmp/var_log_messages.seek -p 'NICLink is Down|General Failure|Not Redundant|drive removed|Physical drive failed|file system full|softerror.*ECC|temperature|THERMAL WARNING|WARNING: md:|PANIC: md:|Event on CPU|Memory Error on|fail-.*bank|failed cpu board|CONSIDER REPLACING THE MEMORY MODULE|kern.warning|kern.err|kern.crit|kern.alert|kern.emerg|Successfully failed over from|Successfully failed back to|link down|link up|daemon.err|daemon.crit|daemon.alert|daemon.emerg|errno|LLT.*-10033.*|LLT.*-10024.*' -c=1
 
 # ==== Others
-command[check_proc] = /usr/lib64/nagios/plugins/check_proc_lin.pl -p <%= @check_process %>
+command[check_proc] = /usr/lib64/nagios/plugins/check_proc_lin.pl -p <%= node["nrpe"]["check_process"] %>
 
 include_dir=/etc/nrpe.d/

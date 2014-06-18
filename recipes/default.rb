@@ -65,9 +65,6 @@ template "/etc/xinetd.d/nrpe" do
   group   "root"
   mode    0644
   action  :create
-  variables(
-    :nagios_server => node["nrpe"]["nagios_server"]
-  )
   notifies :reload, 'service[xinetd]'
 end
 
@@ -78,8 +75,4 @@ template "/etc/nagios/nrpe.cfg" do
   group   "root"
   mode    0644
   action  :create
-  variables(
-    :nagios_server => node["nrpe"]["nagios_server"],
-    :check_process => node["nrpe"]["check_process"]
-  )
 end
