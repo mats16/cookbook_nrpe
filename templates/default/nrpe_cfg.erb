@@ -16,7 +16,7 @@ connection_timeout=300
 #allow_weak_random_seed=1
 
 # ==== Resource
-command[check_vmstat]=/usr/lib64/nagios/plugins/check_vmstat_top5.pl -W $ARG1$ -C $ARG2$
+command[check_vmstat]=perl /usr/lib64/nagios/plugins/check_vmstat_top5.pl -W $ARG1$ -C $ARG2$
 command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p / -p /var -p /home
 command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
 
@@ -24,9 +24,9 @@ command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
 command[check_mysql]=/usr/lib64/nagios/plugins/check_mysql -u $ARG1$ -p$ARG2$
 
 # ==== Log
-command[check_log_messages]=/usr/lib64/nagios/plugins/check_log3.pl -l /var/log/messages -s /tmp/var_log_messages.seek -i -p 'NICLink is Down|General Failure|Not Redundant|drive removed|Physical drive failed|file system full|softerror.*ECC|temperature|THERMAL WARNING|WARNING: md:|PANIC: md:|Event on CPU|Memory Error on|fail-.*bank|failed cpu board|CONSIDER REPLACING THE MEMORY MODULE|kern.warning|kern.err|kern.crit|kern.alert|kern.emerg|Successfully failed over from|Successfully failed back to|link down|link up|daemon.err|daemon.crit|daemon.alert|daemon.emerg|errno|LLT.*-10033.*|LLT.*-10024.*' -c=1
+command[check_log_messages]=perl /usr/lib64/nagios/plugins/check_log3.pl -l /var/log/messages -s /tmp/var_log_messages.seek -i -p 'NICLink is Down|General Failure|Not Redundant|drive removed|Physical drive failed|file system full|softerror.*ECC|temperature|THERMAL WARNING|WARNING: md:|PANIC: md:|Event on CPU|Memory Error on|fail-.*bank|failed cpu board|CONSIDER REPLACING THE MEMORY MODULE|kern.warning|kern.err|kern.crit|kern.alert|kern.emerg|Successfully failed over from|Successfully failed back to|link down|link up|daemon.err|daemon.crit|daemon.alert|daemon.emerg|errno|LLT.*-10033.*|LLT.*-10024.*' -c=1
 
 # ==== Others
-command[check_proc]=/usr/lib64/nagios/plugins/check_proc_lin.pl -p <%= node["nrpe"]["check_process"] %>
+command[check_proc]=perl /usr/lib64/nagios/plugins/check_proc_lin.pl -p <%= node["nrpe"]["check_process"] %>
 
 include_dir=/etc/nrpe.d/
