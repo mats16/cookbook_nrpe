@@ -160,7 +160,7 @@
 require 5.004;
 
 use strict;
-use lib "/usr/lib/nagios/plugins";    # Debian
+use lib "/usr/lib64/nagios/plugins";    # Debian
 use lib "/usr/local/nagios/libexec";  # something else
 use utils qw($TIMEOUT %ERRORS &print_revision &support &usage);
 use Getopt::Long qw(:config no_ignore_case);
