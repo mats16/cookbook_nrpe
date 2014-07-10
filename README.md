@@ -1,9 +1,9 @@
 nrpe Cookbook
 =============
-このクックブックにより、DAC用にカスタマイズされたnrpeの設定を行うことが出来ます。
+このクックブックにより、nrpeの設定を行うことが出来ます。
 - `nrpe` や `plugin` のインストール (epelリポジトリより)
 - `nrpe` と `xinetd` の設定ファイルの生成
-- オリジナル監視スクリプトの配置
+- カスタム監視スクリプトの配置
 
 Requirements
 ------------
@@ -13,14 +13,14 @@ Attributes
 ----------
 
 ```
-default["nrpe"]["nagios_server"] = "10.2.0.4"
+default["nrpe"]["nagios_server"] = "10.0.0.0"
 default["nrpe"]["check_process"] = "snmpd,sshd,rsyslogd,ntpd"
 ```
 
 Usage
 -----
 #### nrpe::default
-nodeの `run_list`: に `nrpe` と記述する。
+nodeの `run_list`: に `nrpe` を記述する。
 
 ```json
 {
