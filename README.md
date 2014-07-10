@@ -7,6 +7,8 @@ nrpe Cookbook
 
 Requirements
 ------------
+- `yum`
+- `yum-epel`
 - `perl` - 一部の監視スクリプトが perl で書かれています。
 
 Attributes
